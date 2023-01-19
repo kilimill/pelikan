@@ -1,0 +1,63 @@
+$scroll-width: 5px;
+$scroll-color: rgba(0, 0, 0, 0.33);
+$track-color: rgba(255, 255, 255, 0.33);
+
+.scrollable-decoration {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-height: 100%;
+  padding-right: 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+
+  .scroll-holder {
+    background-color: $scroll-color;
+    display: none;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: $scroll-width;
+    user-select: none;
+
+    .scroll-track {
+      background-color: $track-color;
+      width: 100%;
+    }
+  }
+
+  &.scrolling {
+    padding-right: $scroll-width;
+
+    .scroll-holder {
+      display: block
+    }
+  }
+
+  .scrollable-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+    max-height: 100%;
+  }
+}
+
+.scroll-custom {
+  height: 100%;
+  overflow-x: auto;
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: $track-color;
+    width: 100%;
+  }
+
+  &::-webkit-scrollbar {
+    background-color: $scroll-color;
+    width: $scroll-width;
+    user-select: none;
+  }
+}

@@ -1,0 +1,104 @@
+@import "src/assets/scss/theme";
+@import "~bootstrap/scss/buttons";
+
+.btn-outline-transparent {
+  $color: $light;
+  $background: rgba(0, 0, 0, .2);
+  @include button-outline-variant(
+    $color: $color,
+    $color-hover: darken($color, 1),
+    $active-background: $background,
+    $active-color: darken($color, 1)
+  );
+
+  &, &:active, &:focus, &.active {
+    border-width: 0;
+    box-shadow: none;
+  }
+}
+
+.btn {
+  &[disabled = true] {
+    opacity: .5;
+    cursor: auto;
+  }
+}
+
+.btn-download {
+  span {
+    pointer-events: none;
+  }
+
+  .btn-loader {
+    display: none;
+  }
+
+  &.load {
+    pointer-events: none;
+
+    .btn-loader {
+      display: block;
+    }
+
+    .material-icons {
+      display: none;
+    }
+  }
+}
+
+.btn-default {
+  color: #fff;
+  background-color: #3f51b5;
+  border-radius: 5px;
+  padding: 4px;
+
+  &.call {
+    // background-color: green;
+    animation: callBtn 2s linear forwards infinite;
+  }
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.camera-video-btn-panel {
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 10px;
+  z-index: 1003;
+}
+
+.camera-video-btn-panel button {
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.3em;
+  padding: 0 5px;
+}
+
+.camera-video-btn-panel button {
+  color: #fff;
+  cursor: pointer;
+}
+
+.camera-video-btn-panel button:focus {
+  box-shadow: none;
+}
+
+.camera-video-btn-panel button:hover {
+  color: #aaa;
+}
+
+@keyframes callBtn {
+
+  0%,
+  100% {
+    background-color: #25ba25;
+  }
+
+  50% {
+    background-color: #0a770a;
+  }
+}

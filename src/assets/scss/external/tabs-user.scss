@@ -1,0 +1,178 @@
+@import "src/assets/scss/theme";
+
+$accordion-button-color: #fff;
+$disabled-button-color: #999;
+
+.tab-content__search {
+  width: 100%;
+
+  input {
+    width: 100%;
+    padding: 3px 10px;
+    background: #0000005c;
+    color: #fff;
+
+    &::placeholder {
+      color: #999999;
+    }
+  }
+}
+
+.tab-content__conference {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.user-controls {
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background-color: $light-blue;
+    border-radius: 50%;
+    margin-right: 10px;
+
+    .material-icons {
+      font-size: 1rem;
+      color: #fff;
+    }
+  }
+}
+
+.lazi-list {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.accordion-info {
+  background-color: transparent;
+  overflow: hidden;
+  box-shadow: none;
+  padding: 3px 5px;
+  color: $accordion-button-color;
+  font-size: 15px;
+
+  .user-name {
+    margin: 5px;
+    overflow: hidden;
+
+    span {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.accordion-button {
+
+  &:focus {
+    border: none;
+    box-shadow: none;
+  }
+
+  &.accordion-button-playback::after {
+    display: none;
+  }
+
+  &::after {
+    width: 15px;
+    height: 15px;
+    background-size: 15px;
+  }
+
+  &:not(.collapsed) {
+    color: $accordion-button-color;
+    background-color: transparent;
+    box-shadow: none;
+
+    &::after {
+      background-image: escape-svg($accordion-button-icon);
+    }
+  }
+
+  &.cant-expand {
+    cursor: default;
+
+    &::after {
+      background-image: none;
+    }
+  }
+}
+
+.accordion-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .form-check-input {
+    flex-shrink: 0;
+    margin-top: 0;
+    margin: 4px;
+  }
+
+  button {
+    padding: 0;
+    margin: 5px;
+    color: #fff;
+    cursor: pointer;
+
+    &:disabled,
+    &.device-off {
+      color: $disabled-button-color;
+    }
+
+    &.highlight {
+      color: $highlight;
+    }
+
+    &.isCalling {
+      color: yellow;
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+.accordion-body {
+  color: $accordion-button-color;
+}
+
+.accordion-item {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px dashed #4d4d4d;
+}
+
+.material-icons {
+  font-size: 1.4rem;
+}
+
+.participant-settings {
+  font-size: 14px;
+}
+
+.flick {
+  animation: fadeinout 2s linear forwards infinite;
+}
+
+@keyframes fadeinout {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}

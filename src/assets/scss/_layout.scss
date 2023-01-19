@@ -1,0 +1,142 @@
+@import "theme";
+
+body, #app {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  flex-direction: column;
+  overflow-x: hidden;
+  font-size: 16px;
+}
+
+.text-alert {
+  color: $light-alert;
+}
+
+.room, .playback {
+  height: 100vh;
+  min-height: inherit;
+  overflow: hidden;
+  $content-offset: 10px;
+
+  &.whole-height {
+    height: auto;
+  }
+
+  &.static-left .place-holder__panel{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-shrink: 0;
+    width: 200px;
+    background-color: $middle-gray;
+
+    .place-holder {
+      position: static;
+    }
+  }
+
+  .a-side, .b-side {
+    display: flex;
+    max-height: 100%;
+
+    & > * {
+      display: flex;
+      flex-direction: column;
+      // padding: $content-offset;
+    }
+  }
+
+  .a-side {
+    width: calc(100% - 350px);
+    padding-right: 0;
+  }
+
+  .b-side {
+    background-color: $dark;
+    color: $light;
+    flex-direction: column;
+    padding-left: 0;
+    .tabs-holder { flex: 1 0 0; overflow: hidden; padding: 0; }
+    &.hide{
+      width: 0;
+    }
+  }
+
+  .place-holder {
+    position: absolute;
+    flex: 0 0 100%;
+    // position: relative;
+    max-width: 100%;
+    z-index: 1002;
+
+    &--small {
+      width: 200px;
+      height: 200px;
+      flex: 0 0 auto;
+    }
+
+    &--large {
+      align-items: stretch;
+      // justify-content: center;
+      overflow: hidden;
+      padding: 0;
+      text-align: center;
+      justify-content: flex-end;
+      width: 100%;
+      height: 100%;
+      background-color: lightgrey;
+    }
+  }
+}
+
+.user-list {
+  height: calc(100% - 200px);
+  overflow-y: hidden;
+
+  &__wrapper {
+    height: 100%;
+    overflow-x: auto;
+  }
+
+  &__video {
+    position: absolute;
+  }
+
+  &__item {
+    height: 200px;
+    position: relative;
+
+    & + & {
+      margin-top: 15px;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    width: inherit;
+    background-color: #000;
+    height: 100%;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .room, .playback {
+    margin: 0;
+    .a-side {display: none;}
+    .b-side {padding-right: 0; }
+    .b-side .small-place--holder { display: none; }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .room, .playback {
+    .b-side {width: 380px;}
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .room, .playback{
+    .b-side {width: 350px;}
+  }
+}
